@@ -35,6 +35,7 @@ public class SortedListFrame extends JFrame
     String resultsText;
 
     JButton quitBtn;
+    JFrame frameQuit = new JFrame("Confirmation");
 
     int marginSize = 15;
     int searchIndex;
@@ -147,7 +148,16 @@ public class SortedListFrame extends JFrame
         quitBtn = new JButton("QUIT the app");
         quitBtn.addActionListener((ActionEvent ae) ->
         {
-            System.exit(0);
+            int result = JOptionPane.showConfirmDialog(frameQuit, "Are you sure you want to quit?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+            if (result == JOptionPane.YES_OPTION)
+            {
+                System.exit(0);
+            }
+            else
+            {
+                frameQuit.dispose();
+            }
         });
 
         buttonsPnl.add(quitBtn);
